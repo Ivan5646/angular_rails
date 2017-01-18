@@ -1,0 +1,1 @@
+stopped at https://thinkster.io/tutorials/angular-rails/creating-the-single-post-view completed
