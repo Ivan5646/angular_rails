@@ -1,4 +1,16 @@
-angular.module('flapperNews', [])
+angular.module('flapperNews', ['ui.router'])
+
+.config(['$stateProvider', '$urlRouterProvider',
+function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      templateUrl: '/home.html',
+      controller: 'MainCtrl'
+    });
+  $urlRouterProvider.otherwise('home');
+}])
+
 .factory('posts', [function(){ 
   var o = {
     posts: []
@@ -6,7 +18,7 @@ angular.module('flapperNews', [])
   return o;
 }])
 
-.controller('MainCtrl', ['$scope', 'posts',
+.controller('MainCtrl', ['$scope', 'posts', // posts is a factotry
 function($scope, posts){
   $scope.posts = posts.posts; // Bind the $scope.posts variable in our controller to the posts array in our service
 
